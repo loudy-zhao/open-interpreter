@@ -48,6 +48,10 @@ https://github.com/KillianLucas/open-interpreter/assets/63927363/37152071-680d-4
 #### Google Colab 上也提供了交互式演示：
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1WKmRXZgsErej2xUriKzxrEAXdxMSgWbb?usp=sharing)
+## 请注意litellm 库中utils.py 请rem out 下面着句，否则会输出stream api 结果，非debug 模式影响界面
+
+if self.stream:
+                #print(f"stream result: {result}")
 
 ## 快速开始
 

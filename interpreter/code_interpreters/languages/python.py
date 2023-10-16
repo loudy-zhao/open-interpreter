@@ -10,11 +10,11 @@ class Python(SubprocessCodeInterpreter):
 
     def __init__(self):
         super().__init__()
-        self.start_cmd = shlex.quote(sys.executable) + " -i -q -u"
-        
+        #self.start_cmd = shlex.quote(sys.executable) + " -i -q -u"
+        self.start_cmd = str(sys.executable) + " -i -q -u"
     def preprocess_code(self, code):
         return preprocess_python(code)
-    
+
     def line_postprocessor(self, line):
         if re.match(r'^(\s*>>>\s*|\s*\.\.\.\s*)', line):
             return None
@@ -27,7 +27,7 @@ class Python(SubprocessCodeInterpreter):
 
     def detect_end_of_execution(self, line):
         return "## end_of_execution ##" in line
-    
+
 
 def preprocess_python(code):
     """
@@ -115,7 +115,7 @@ class AddLinePrints(ast.NodeTransformer):
                 new_node.finalbody = self.process_body(new_node.finalbody)
 
         return new_node
-    
+
 
 def wrap_in_try_except(code):
     # Add import traceback
